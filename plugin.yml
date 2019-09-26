@@ -1,0 +1,17 @@
+main: hx.server.plugin.Main
+name: AutoReplant
+version: 1.0
+api-version: 1.13
+author: Mounir
+description: A plugin which automatically replants crops.
+commands:
+   setdelay:
+      usage: "usage: /setdelay delay (in seconds)"
+   addcrop:
+      usage: "usage: /addcrop crop (wheat, carrots, potatoes, beetroot, nether wart)"
+   removecrop:
+      usage: "usage: /removecrop crop (wheat, carrots, potatoes, beetroot, nether wart)"
+   adjustdrops:
+      usage: "usage: /adjustdrops true/false"
+   autoreplant:
+      usage: "usage /autoreplant enable/disable"
