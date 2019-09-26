@@ -13,6 +13,7 @@ public class Main extends JavaPlugin {
 	{
 		this.enabled = true;
 		this.listener = new BlockBreakListener(this);
+		// Register the listener that will be detecting blockupdates.
 	    getServer().getPluginManager().registerEvents(listener, this);
 	}
 	
@@ -20,7 +21,7 @@ public class Main extends JavaPlugin {
     public void onDisable() {
     }
 
-    
+    // Function to check whether the crop given is actually valid.
     private boolean checkCropExistence(String crop, CommandSender sender) {
     	if (!(crop.equals("wheat") ||
 			  crop.equals("carrots") ||
@@ -37,6 +38,7 @@ public class Main extends JavaPlugin {
                              Command command,
                              String label,
                              String[] args) {
+		// Disable or enable the plugin.
     	if (command.getName().equalsIgnoreCase("autoreplant")) {
     		if (args[0].equals("enable")) {
     			listener.enabled = true;
@@ -48,7 +50,8 @@ public class Main extends JavaPlugin {
     			return true;
     		}
     	}
-    	
+		
+		// Set a delay in the autoreplanter given in seconds.
     	if (command.getName().equalsIgnoreCase("setdelay")) {
     		if(args.length != 1) {
     			return false;
@@ -58,7 +61,8 @@ public class Main extends JavaPlugin {
     		sender.sendMessage("Delay set to " + delay + " seconds.");
     		return true;
     	}
-    	
+		
+		// Add or remove a crop from the autoreplanter list.
     	if(command.getName().equalsIgnoreCase("removecrop")) {
     		if(!checkCropExistence(args[0], sender) || args.length != 1) {
     			return false;
@@ -76,7 +80,8 @@ public class Main extends JavaPlugin {
     		sender.sendMessage("Added the crop " + args[0] + " to the autoreplant list.");
     		return true;
     	}
-    	
+		
+		// Enable or disable drop modification for autoreplanting.
     	if(command.getName().equalsIgnoreCase("adjustdrops")) {
     		if(!checkCropExistence(args[0], sender) || args.length != 1) {
     			return false;
